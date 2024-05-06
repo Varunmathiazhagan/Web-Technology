@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .form-group {
+            margin-bottom: 70px;
+           color: red;
+        }
+        body {
+            background-image: url('eb.jpeg');
+            background-size: cover;
+            background-position: center;
+            margin: 0; 
+            padding: 0; 
+            font-family: Arial, sans-serif; /
+        }
+        h2 {
+            text-align: center; 
+        }
+    </style>
+
+    <script>
+        function calculateBill() {
+            var unitsConsumed = parseFloat(document.getElementById("unitsConsumed").value);
+            var fixedCharge = 30;
+            var unitCharge = 3.50;
+            var totalBill = fixedCharge + (unitsConsumed * unitCharge);
+            document.getElementById("totalBill").innerText = "Total Bill: Rs. " + totalBill.toFixed(2);
+            document.getElementById("payButton").disabled = false;
+        }
+
+        function payBill() {
+            alert("Payment functionality is not implemented yet.");
+        }
+    </script>
+</head>
+<body>
+
+<div>
+    <h2>TANGEDCO Bill Calculator</h2>
+    <form>
+        <div class="form-group">
+            <label for="serviceNumber">Service Number:</label>
+            <input type="text" id="serviceNumber" name="serviceNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Name of the Service Holder:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="unitsConsumed">Enter Units Consumed:</label>
+            <input type="number" id="unitsConsumed" name="unitsConsumed" min="0" step="any" required>
+        </div>
+        <div class="form-group">
+            <label for="tariff">Tariff Check:</label>
+            <select id="tariff" name="tariff" required>
+                <option value="">Select Tariff</option>
+                <option value="Domestic">Domestic</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Industrial">Industrial</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="billingCycle">Billing Cycle:</label>
+            <select id="billingCycle" name="billingCycle" required>
+                <option value="">Select Billing Cycle</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Bi-Monthly">Bi-Monthly</option>
+                <option value="Quarterly">Quarterly</option>
+            </select>
+        </div>
+        <button type="button" onclick="calculateBill()">Calculate Bill</button>
+    </form>
+    <div id="totalBill" style="margin-top: 10px;"></div>
+    <button id="payButton" type="button" onclick="payBill()" disabled style="margin-top: 10px;">Pay Now</button>
+</div>
+
+</body>
+</html>
