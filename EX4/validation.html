@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #dd9bb7;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .error-message {
+            color: red;
+            display: none;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Registration Form</h1>
+    <form id="studentForm">
+        <div class="form-group">
+            <label for="name"><b>Name:</b></label>
+            <input type="text" id="name" name="name" required>
+            <div id="nameError" class="error-message">*Please enter a valid name.</div>
+        </div>
+        <div class="form-group">
+            <label for="rollNo"><b>Roll Number:</b></label>
+            <input type="text" id="rollNo" name="rollNo" required pattern="[0-9]{2}[a-zA-Z]{3}[0-9]{3}">
+            <div id="rollNoError" class="error-message">*Please enter a valid roll number (e.g., 22ITR112).</div>
+        </div>
+        <div class="form-group">
+            <label for="interest"><b>Area of Interest:</b></label>
+            <select id="interest" name="interest" required>
+                <option value="">Select an option</option>
+                <option value="Cloud Computing">Cloud Computing</option>
+                <option value="App Development">App Development</option>
+                <option value="AI">AI</option>
+                <option value="Web Development">Web Development</option>
+            </select>
+            <div id="interestError" class="error-message">*Please select an area of interest.</div>
+        </div>
+        <div class="form-group">
+            <label for="gender"><b>Gender:</b></label><br>
+            <input type="radio" id="male" name="gender" value="Male" required>
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label><br>
+            <input type="radio" id="other" name="gender" value="Other">
+            <label for="other">Other</label>
+            <div id="genderError" class="error-message">*Please select your gender.</div>
+        </div>
+        <div class="form-group">
+            <label for="password"><b>Password:</b></label>
+            <input type="text" id="password" name="password" required>
+            <div id="passwordError" class="error-message">*Your password should contain 1 uppercase letter, 1 digit, 1 special character and be between 8 to 12 characters</div>
+        </div>
+        <div class="form-group">
+            <label for="email"><b>Email:</b></label>
+            <input type="email" id="email" name="email" required>
+            <div id="emailError" class="error-message">*Please enter a valid email address.</div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber"><b>Phone Number:</b></label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+            <div id="phoneNumberError" class="error-message">*Please enter a valid phone number.</div>
+        </div>
+        <div class="form-group">
+            <label><b>Programming Languages Known:</b></label><br>
+            <input type="checkbox" id="c" name="languagesKnown" value="C">
+            <label for="c">C</label><br>
+            <input type="checkbox" id="cpp" name="languagesKnown" value="C++">
+            <label for="cpp">C++</label><br>
+            <input type="checkbox" id="java" name="languagesKnown" value="Java">
+            <label for="java">Java</label><br>
+            <input type="checkbox" id="python" name="languagesKnown" value="Python">
+            <label for="python">Python</label><br>
+            <input type="checkbox" id="javascript" name="languagesKnown" value="JavaScript">
+            <label for="javascript">JavaScript</label><br>
+            <input type="checkbox" id="html" name="languagesKnown" value="HTML">
+            <label for="html">HTML</label><br>
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="validateForm()">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        function validateForm() {
+            var form = document.getElementById("studentForm");
+            var isValid = true;
+
+            var name = document.getElementById("name").value;
+            if (!name.match(/^[A-Z]{1}[a-zA-Z ]+$/)) {
+                document.getElementById("nameError").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("nameError").style.display = "none";
+            }
+
+            var rollNo = document.getElementById("rollNo").value;
+            if (!rollNo.match(/^\d{2}[a-zA-Z]{3}\d{3}$/)) {
+                document.getElementById("rollNoError").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("rollNoError").style.display = "none";
+            }
+
+            var interest = document.getElementById("interest").value;
+            if (interest === "") {
+                document.getElementById("interestError").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("interestError").style.display = "none";
+            }
+
+            var gender = document.querySelector('input[name="gender"]:checked');
+            if (!gender) {
+                document.getElementById("genderError").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("genderError").style.display = "none";
+            }
+
+            var password = document.getElementById("password").value;
+            if (!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,12}$/)) {
+                document.getElementById("passwordError").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("passwordError").style.display = "none";
+            }
+
+            var email = document.getElementById("email").value;
+            if (!email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
+                document.getElementById("emailError").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("emailError").style.display = "none";
+            }
+
+            var phoneNumber = document.getElementById("phoneNumber").value;
+            if (!phoneNumber.match(/^[6-9]\d{9}$/)) {
+                document.getElementById("phoneNumberError").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("phoneNumberError").style.display = "none";
+            }
+
+            var languagesKnown = document.querySelectorAll('input[name="languagesKnown"]:checked');
+            if (languagesKnown.length < 1 || languagesKnown.length > 3) {
+                document.getElementById("languagesKnownError").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("languagesKnownError").style.display = "none";
+            }
+
+            if (isValid) {
+                form.submit();
+                alert("Form submitted successfully!");
+            }
+        }
+    </script>
+</body>
+</html>
