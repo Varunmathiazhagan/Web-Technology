@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #0070d1;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .gallery-item {
+            margin: 10px;
+            width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px 10px 0 0;
+        }
+        .gallery-item .caption {
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 0 0 10px 10px;
+        }
+        .gallery-item h2 {
+            margin-top: 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gallery</h1>
+    </header>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300" alt="Image 1">
+            <div class="caption">
+                <h2>Image 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300" alt="Image 2">
+            <div class="caption">
+                <h2>Image 2</h2>
+                <p>Integer tincidunt justo quis magna vehicula, sit amet porta felis malesuada.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300" alt="Image 3">
+            <div class="caption">
+                <h2>Image 3</h2>
+                <p>Vestibulum sagittis magna vitae nulla vehicula, eu congue nunc ultrices.</p>
+            </div>
+        </div>
+        <!-- Add more gallery items here -->
+    </div>
+</body>
+</html>
