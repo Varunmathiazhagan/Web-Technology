@@ -1,0 +1,14 @@
+
+
+body{
+    background-color: aquamarine;
+    background-size: cover;
+}
+.picture{
+    float:left;
+}
+h1{
+    color: brown;
+    text-align: center;
+    border-radius: 12px;
+}
