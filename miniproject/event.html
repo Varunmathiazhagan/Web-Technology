@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Form (GET)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: url('b1.jpg') no-repeat center center fixed; /* Add your background image URL here */
+            background-size: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Add a dark overlay for better text readability */
+            z-index: -1;
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 40px; /* Adjust top margin for spacing */
+            color: #ffffff; /* White text color for better visibility */
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            box-sizing: border-box;
+            margin-top: 20px; /* Adjust top margin for spacing */
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"],
+        select {
+            width: calc(100% - 16px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .btn-group button {
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            form {
+                padding: 20px;
+            }
+
+            input[type="text"],
+            select {
+                width: 100%;
+            }
+
+            .btn-group {
+                justify-content: center;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <h1 class="title">EVENT DETAILS</h1>
+    <form id="form" method="get">
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" required><br>
+       
+        <label for="eventname">Event Name:</label>
+        <input type="text" id="eventname" name="eventname" required><br>
+       
+        <label for="coordinatorid">Coordinator ID:</label>
+        <input type="text" id="coordinatorid" name="coordinatorid" required><br>
+       
+        <label for="budget">Budget:</label>
+        <input type="text" id="budget" name="budget" required><br>
+       
+        <div class="btn-group">
+            <button type="submit" onclick="set('/insert', event)">Insert</button>
+            <button type="submit" onclick="set('/delete', event)">Delete</button>
+            <button type="submit" onclick="set('/update', event)">Update</button>
+            <button type="submit" onclick="set('/display', event)">Report</button>
+        </div>
+    </form>
+
+    <script>
+        function set(path, event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            document.getElementById('form').action = 'http://localhost:8000' + path;
+            document.getElementById('form').submit(); // Submit the form after setting the action
+        }
+    </script>
+</body>
+</html>
